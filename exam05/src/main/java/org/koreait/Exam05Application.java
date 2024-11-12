@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Exam05Application {
 
 	public static void main(String[] args) {
-		System.out.println("메인메서드!");
 		SpringApplication.run(Exam05Application.class, args);
 	}
 

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<form method="POST" action="@{/member/join}" th:object="${requestJoin}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/main}">
+<main layout:fragment="content">
+<div th:text="${@ut.hello(requestJoin.name)}"></div>
+<div th:text="${#messages.msg('LOGIN_MSG',requestJoin.name,requestJoin.email)}"></div>
+<form method="POST" th:action="@{/member/join}" th:object="${requestJoin}">
     <dl>
-        <dt>이메일</dt>
+        <dt th:text="#{이메일}"></dt>
         <dd th:text="*{email}">test01@test.org</dd>
     </dl>
     <dl>
-        <dt>비밀번호</dt>
+        <dt th:text="#{비밀번호}"></dt>
         <dd th:text="*{password}">12345678</dd>
     </dl>
     <dl>
-        <dt>비밀번호 확인</dt>
+        <dt th:text="#{비밀번호_확인}"></dt>
         <dd th:text="*{confirmPassword}">12345678</dd>
     </dl>
-
     <dl>
-        <dt>회원명</dt>
+        <dt th:text="#{회원명}"></dt>
         <dd th:text="*{name}">이이름</dd>
     </dl>
     <button type="submit">가입하기</button>
     <a th:href="@{/member/login(param1=*{email}, param2=*{password})}">로그인</a>
-    <a th:href="@{/member/findId}/(em=*{email})">아이디 찾기</a>
+    <a th:href="@{/member/findId/{em}(em=*{email})}">아이디 찾기</a>
 
 </form>
-</body>
+</main>
 </html>
