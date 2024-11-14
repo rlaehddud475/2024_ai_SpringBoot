@@ -1,2 +1,7 @@
 server:
   port: 3000
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
