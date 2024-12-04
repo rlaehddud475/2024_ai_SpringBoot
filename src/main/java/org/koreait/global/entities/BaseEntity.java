@@ -1,5 +1,6 @@
 package org.koreait.global.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)  // 엔티티의 변화 감지를 확인을 할 수 있다!
 public abstract class BaseEntity {
     @Column(updatable = false)
+    @JsonFormat(pattern = "yyyy.MM.dd HH:mm")
     //@CreationTimestamp
     @CreatedDate
     private LocalDateTime regDt;
@@ -22,5 +24,6 @@ public abstract class BaseEntity {
     @Column(insertable = false)
     //@UpdateTimestamp
     @LastModifiedDate
+    @JsonFormat(pattern = "yyyy.MM.dd HH:mm")
     private LocalDateTime modDt;
 }
